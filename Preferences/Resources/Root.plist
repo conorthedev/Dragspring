@@ -58,6 +58,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Configuration</string>
+            <key>footerText</key>
+            <string>When supplying a custom command, you must give the full path to the command. For example: '/usr/bin/sbreload' is 'sbreload'</string>
 		</dict>
 		<dict>
 			<key>cell</key>
