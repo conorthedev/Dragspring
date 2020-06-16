@@ -76,7 +76,7 @@ static PSUIPrefsListController *globalController;
 
 void ReloadPrefs() {
     defaults = [[NSUserDefaults alloc] initWithSuiteName:@"me.conorthedev.dragspring.prefs"];
-    [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring!", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
+    [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring?", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
     
     enabled = [[defaults objectForKey:@"enabled"] boolValue];
     delayForSecond = [[defaults objectForKey:@"delayForSecond"] boolValue];

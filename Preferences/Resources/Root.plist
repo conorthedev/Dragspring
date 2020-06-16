@@ -45,7 +45,7 @@
             <key>cellClass</key>
             <string>DSReturnTextCell</string>
             <key>default</key>
-            <string>Respring!</string>
+            <string>Respring?</string>
             <key>placeholder</key>
             <string>Text</string>
             <key>defaults</key>

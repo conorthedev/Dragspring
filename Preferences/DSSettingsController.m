@@ -9,7 +9,7 @@ NSUserDefaults *defaults;
 
     if (self) {
         defaults = [[NSUserDefaults alloc] initWithSuiteName:@"me.conorthedev.dragspring.prefs"];
-        [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring!", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
+        [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring?", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
 
         UISwitch *toggleSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
         [toggleSwitch setOn:[[defaults objectForKey:@"enabled"] boolValue] animated:NO];
