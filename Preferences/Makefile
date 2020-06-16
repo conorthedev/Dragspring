@@ -4,7 +4,7 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = DragspringPrefs
 
-DragspringPrefs_FILES = DSSettingsController.m $(wildcard SkittyPrefs/*.m)
+DragspringPrefs_FILES = DSSettingsController.m 
 DragspringPrefs_FRAMEWORKS = UIKit
 DragspringPrefs_LIBRARIES = appearancecell
 DragspringPrefs_PRIVATE_FRAMEWORKS = Preferences

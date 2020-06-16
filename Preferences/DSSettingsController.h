@@ -1,8 +1,8 @@
+#import <Preferences/PSListController.h>
 #import <Preferences/PSEditableTableCell.h>
 #import <libappearancecell/libappearancecell.h>
-#import "SkittyPrefs/SPSettingsController.h"
 
-@interface DSSettingsController : SPSettingsController
+@interface DSSettingsController : PSListController
 @end
 
 @interface DSReturnTextCell : PSEditableTableCell

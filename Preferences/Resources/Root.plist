@@ -2,18 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "hDS://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>name</key>
-	<string>Dragspring</string>
-	<key>subtitle</key>
-	<string>Version 2.0</string>
-	<key>headerColor</key>
-	<string>#6452bd</string>
-	<key>darkHeaderColor</key>
-	<string>#6452bd</string>
-	<key>textColor</key>
-	<string>#ffffff</string>
-	<key>darkTextColor</key>
-	<string>#ffffff</string>
 	<key>items</key>
 	<array>
     	<dict>
@@ -48,47 +36,9 @@
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
             <key>key</key>
             <string>appearance</string>
-            <key>tintColor</key>
-			<string>#836DF0</string>
             <key>height</key>
-            <integer>160</integer>
+            <integer>210</integer>
         </dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Configuration</string>
-            <key>footerText</key>
-            <string>When supplying a custom command, you must give the full path to the command. For example: '/usr/bin/sbreload' is 'sbreload'</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>me.conorthedev.dragspring.prefs</string>
-			<key>key</key>
-			<string>enabled</string>
-			<key>label</key>
-			<string>Enabled</string>
-            <key>PostNotification</key>
-			<string>me.conorthedev.dragspring/ReloadPreferences</string>
-		</dict>
-        <dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>me.conorthedev.dragspring.prefs</string>
-			<key>key</key>
-			<string>delayForSecond</string>
-			<key>label</key>
-			<string>Delay for 1 second before running</string>
-            <key>PostNotification</key>
-			<string>me.conorthedev.dragspring/ReloadPreferences</string>
-		</dict>
         <dict>
             <key>cell</key>
             <string>PSEditTextCell</string>
@@ -125,6 +75,28 @@
             <key>PostNotification</key>
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
         </dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Configuration</string>
+            <key>footerText</key>
+            <string>When supplying a custom command, you must give the full path to the command. For example: '/usr/bin/sbreload' is 'sbreload'</string>
+		</dict>
+        <dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>me.conorthedev.dragspring.prefs</string>
+			<key>key</key>
+			<string>delayForSecond</string>
+			<key>label</key>
+			<string>Delay for 1 second before running</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+		</dict>
         <dict>
             <key>cell</key>
             <string>PSEditTextCell</string>
@@ -179,6 +151,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string></string>
+	<string>Dragspring</string>
 </dict>
 </plist>
