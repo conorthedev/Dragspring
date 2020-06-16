@@ -1,9 +1,11 @@
 Package: me.conorthedev.dragspring
 Name: Dragspring
-Version: 1.0
+Version: 2.0
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Pull down in settings to respring your device & more
 Maintainer: ConorTheDev <conorthedev@gmail.com>
 Author: ConorTheDev <conorthedev@gmail.com>
 Section: Tweaks
 Depends: mobilesubstrate, preferenceloader
+Provides: com.conorthedev.dragspring
+Replaces: com.conorthedev.dragspring
