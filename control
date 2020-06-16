@@ -6,6 +6,6 @@ Description: Pull down in settings to respring your device & more
 Maintainer: ConorTheDev <conorthedev@gmail.com>
 Author: ConorTheDev <conorthedev@gmail.com>
 Section: Tweaks
-Depends: mobilesubstrate, preferenceloader, me.conorthedev.libappearancecell, me.conorthedev.libconorthedev
+Depends: mobilesubstrate, preferenceloader, me.conorthedev.libappearancecell
 Provides: com.conorthedev.dragspring
 Replaces: com.conorthedev.dragspring
