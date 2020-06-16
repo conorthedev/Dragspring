@@ -1,0 +1,9 @@
+Package: me.conorthedev.dragspring
+Name: Dragspring
+Version: 1.0
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: ConorTheDev <conorthedev@gmail.com>
+Author: ConorTheDev <conorthedev@gmail.com>
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader
