@@ -2,22 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "hDS://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>name</key>
+	<string>Dragspring</string>
+	<key>subtitle</key>
+	<string>Version 2.0</string>
+	<key>headerColor</key>
+	<string>#6452bd</string>
+	<key>darkHeaderColor</key>
+	<string>#6452bd</string>
+	<key>textColor</key>
+	<string>#ffffff</string>
+	<key>darkTextColor</key>
+	<string>#ffffff</string>
 	<key>items</key>
 	<array>
-    	<dict>
-    		<key>cell</key>
-    		<string>PSDefaultCell</string>
-    		<key>cellClass</key>
-    		<string>CTDHeaderCell</string>
-    		<key>title</key>
-    		<string>Dragspring</string>
-			<key>subtitle</key>
-    		<string>Version 2.0</string>
-			<key>icon</key>
-    		<string>largeIcon.png</string>
-			<key>height</key>
-			<real>150</real>
-		</dict>
     	<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
