@@ -13,6 +13,7 @@
 														blue:189.0f / 255.0f
 													   alpha:1];
 		preferenceSettings.barTintColor = preferenceSettings.tintColor;
+		preferenceSettings.headerTextColor = [UIColor whiteColor];
 
 		self.preferenceSettings = preferenceSettings;
     }
