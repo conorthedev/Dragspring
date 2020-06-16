@@ -48,6 +48,8 @@
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
             <key>key</key>
             <string>appearance</string>
+            <key>tintColor</key>
+			<string>#836DF0</string>
             <key>height</key>
             <integer>160</integer>
         </dict>
