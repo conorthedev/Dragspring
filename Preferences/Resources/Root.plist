@@ -13,8 +13,8 @@
     		<string>Dragspring</string>
 			<key>subtitle</key>
     		<string>Version 2.0</string>
-			<key>iconPath</key>
-    		<string>/Library/PreferenceBundles/DragspringPrefs.bundle/bigicon.png</string>
+			<key>icon</key>
+    		<string>largeIcon.png</string>
 			<key>height</key>
 			<real>150</real>
 		</dict>
