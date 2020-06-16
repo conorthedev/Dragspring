@@ -1,9 +1,11 @@
 #import "Tweak.h"
 
 NSUserDefaults *defaults;
+
 BOOL enabled;
 BOOL shouldShowText;
-BOOL hapticFeedback;
+BOOL delayForSecond;
+
 NSString *subtitleBefore;
 NSString *subtitleDuring;
 NSString *command;
@@ -42,37 +44,42 @@ static PSUIPrefsListController *globalController;
 
 %new
 - (void)_dragspringRunCommand {
-    %log;
-    if(hapticFeedback) {
-        UIImpactFeedbackGenerator *generator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
-        [generator prepare];
-        [generator impactOccurred]; 
-        generator = nil;
-	}
+    if(shouldShowText) {
+        self.dragspringRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:subtitleDuring];
+    }
 
     NSMutableArray *arguments = [[command componentsSeparatedByString:@" "] mutableCopy];
     NSString *command = arguments[0];
 
     [arguments removeObject:command];
     
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:command];
-    [task setArguments:arguments];
-    [task setTerminationHandler:^(NSTask* task) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.dragspringRefreshControl endRefreshing];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if(delayForSecond) {
+            [NSThread sleepForTimeInterval:1];  
+        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSTask *task = [[NSTask alloc] init];
+            [task setLaunchPath:command];
+            [task setArguments:arguments];
+            [task setTerminationHandler:^(NSTask* task) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self.dragspringRefreshControl endRefreshing];
+                });
+            }];
+            [task launch];
         });
-    }];
-    [task launch];
+    });
+    
 }
 %end
 
 void ReloadPrefs() {
     defaults = [[NSUserDefaults alloc] initWithSuiteName:@"me.conorthedev.dragspring.prefs"];
-    [defaults registerDefaults:@{ @"enabled" : @YES, @"hapticFeedback": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring!", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
+    [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring!", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
     
     enabled = [[defaults objectForKey:@"enabled"] boolValue];
-    hapticFeedback = [[defaults objectForKey:@"hapticFeedback"] boolValue];
+    delayForSecond = [[defaults objectForKey:@"delayForSecond"] boolValue];
     shouldShowText = [[defaults objectForKey:@"appearance"] intValue];
     subtitleBefore = [[defaults objectForKey:@"subtitleBefore"] stringValue];
     subtitleDuring = [[defaults objectForKey:@"subtitleAfter"] stringValue];

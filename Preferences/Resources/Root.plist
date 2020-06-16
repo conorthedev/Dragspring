@@ -4,6 +4,55 @@
 <dict>
 	<key>items</key>
 	<array>
+    	<dict>
+    		<key>cell</key>
+    		<string>PSDefaultCell</string>
+    		<key>cellClass</key>
+    		<string>CTDHeaderCell</string>
+    		<key>title</key>
+    		<string>Dragspring</string>
+			<key>subtitle</key>
+    		<string>Version 2.0</string>
+			<key>iconPath</key>
+    		<string>/Library/PreferenceBundles/DragspringPrefs.bundle/bigicon.png</string>
+			<key>height</key>
+			<real>150</real>
+		</dict>
+    	<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Appearance</string>
+		</dict>
+        <dict>
+            <key>cell</key>
+            <string>PSDefaultCell</string>
+            <key>cellClass</key>
+            <string>AppearanceSelectionTableCell</string>
+            <key>options</key>
+            <array>
+                <dict>
+                    <key>text</key>
+                    <string>No Title</string>
+                    <key>image</key>
+                    <string>notext</string>
+                </dict>
+                <dict>
+                    <key>text</key>
+                    <string>Use Title</string>
+                    <key>image</key>
+                    <string>text</string>
+                </dict>
+            </array>
+            <key>defaults</key>
+			<string>me.conorthedev.dragspring.prefs</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+            <key>key</key>
+            <string>appearance</string>
+            <key>height</key>
+            <integer>160</integer>
+        </dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -24,8 +73,110 @@
             <key>PostNotification</key>
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
 		</dict>
+        <dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>me.conorthedev.dragspring.prefs</string>
+			<key>key</key>
+			<string>delayForSecond</string>
+			<key>label</key>
+			<string>Delay for 1 second before running</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+		</dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>cellClass</key>
+            <string>DSReturnTextCell</string>
+            <key>default</key>
+            <string>Respring!</string>
+            <key>placeholder</key>
+            <string>Text</string>
+            <key>defaults</key>
+            <string>me.conorthedev.dragspring.prefs</string>
+            <key>label</key>
+            <string>Before action title:</string>
+            <key>key</key>
+            <string>subtitleBefore</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>cellClass</key>
+            <string>DSReturnTextCell</string>
+            <key>default</key>
+            <string>Respringing...</string>
+            <key>placeholder</key>
+            <string>Text</string>
+            <key>defaults</key>
+            <string>me.conorthedev.dragspring.prefs</string>
+            <key>label</key>
+            <string>During action title:</string>
+            <key>key</key>
+            <string>subtitleAfter</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>cellClass</key>
+            <string>DSReturnTextCell</string>
+            <key>default</key>
+            <string>/usr/bin/sbreload</string>
+            <key>placeholder</key>
+            <string>Command</string>
+            <key>defaults</key>
+            <string>me.conorthedev.dragspring.prefs</string>
+            <key>label</key>
+            <string>Command:</string>
+            <key>key</key>
+            <string>command</string>
+            <key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+        </dict>
+        <dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Other</string>
+		</dict>
+		<dict>
+			<key>cell</key> 					
+			<string>PSButtonCell</string>
+			<key>action</key> 					
+			<string>code</string>
+			<key>label</key> 					
+			<string>View source code</string>
+			<key>icon</key>
+			<string>/Library/PreferenceBundles/DragspringPrefs.bundle/source.png</string>
+		</dict>
+		<dict>
+			<key>cell</key> 					
+			<string>PSButtonCell</string>
+			<key>action</key> 					
+			<string>bug</string>
+			<key>label</key> 					
+			<string>Report a Bug</string>
+			<key>icon</key>
+			<string>/Library/PreferenceBundles/DragspringPrefs.bundle/bug.png</string>
+		</dict>
+		<dict>
+			<key>cell</key> 					
+			<string>PSGroupCell</string>
+			<key>footerText</key> 				
+			<string>Made with ❤️ by ConorTheDev</string>
+			<key>footerAlignment</key> 			
+			<string>1</string>
+		</dict>
 	</array>
 	<key>title</key>
-	<string>Dragspring</string>
+	<string></string>
 </dict>
 </plist>
