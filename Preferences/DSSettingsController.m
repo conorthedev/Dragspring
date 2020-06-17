@@ -24,6 +24,19 @@ NSUserDefaults *defaults;
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
+		self.required = (!self.required) ? [NSMutableDictionary new] : self.required;
+
+		for (PSSpecifier *specifier in _specifiers) {
+			if ([specifier propertyForKey:@"requires"]) {
+				[self.required setObject:@0 forKey:[specifier propertyForKey:@"requires"]];
+			}
+		}
+
+		for (PSSpecifier *specifier in _specifiers) {
+			if ([self.required objectForKey:[specifier propertyForKey:@"key"]]) {
+				[self.required setObject:[self readPreferenceValue:specifier] forKey:[specifier propertyForKey:@"key"]];
+			}
+		}
 	}
 
 	return _specifiers;
@@ -43,7 +56,31 @@ NSUserDefaults *defaults;
     CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("me.conorthedev.dragspring/ReloadPreferences"), NULL, NULL, TRUE);        
 }
 
-@end
+- (CGFloat)tableView:(UITableView *)view heightForRowAtIndexPath:(NSIndexPath *)path {
+    PSSpecifier *specifier = [self specifierAtIndexPath:path];
+    if ([specifier propertyForKey:@"requires"]) {
+        if ([[self.required objectForKey:[specifier propertyForKey:@"requires"]] integerValue] != 3) {
+            return 0.01;
+        }
+    }
+
+    return [super tableView:view heightForRowAtIndexPath:path];
+}
+
+- (void)tableView:(UITableView *)view willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)path {
+	cell.clipsToBounds = YES;
+}
+
+- (void)setPreferenceValue:(id)value specifier:(PSSpecifier *)specifier {
+    [super setPreferenceValue:value specifier:specifier];
+	if ([specifier propertyForKey:@"key"] && [self.required objectForKey:[specifier propertyForKey:@"key"]]) {
+		[self.required setObject:value forKey:[specifier propertyForKey:@"key"]];
+		[[self valueForKey:@"_table"] beginUpdates];
+		[[self valueForKey:@"_table"] endUpdates];
+	}
+}
+
+@end    
 
 @implementation DSReturnTextCell
 

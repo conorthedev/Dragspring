@@ -144,6 +144,8 @@
             <string>customCommand</string>
             <key>PostNotification</key>
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+			<key>requires</key>
+			<string>command</string>
         </dict>
         <dict>
 			<key>cell</key>
