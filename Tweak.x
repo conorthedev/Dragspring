@@ -1,4 +1,5 @@
 #import "Tweak.h"
+#include <spawn.h>
 
 NSUserDefaults *defaults;
 
@@ -13,6 +14,8 @@ NSString *subtitleDuring;
 NSString *customCommand;
 
 static PSUIPrefsListController *globalController;
+
+void runCommand();
 
 %hook PSUIPrefsListController
 %property (nonatomic, strong) UIRefreshControl *dragspringRefreshControl;
@@ -70,7 +73,7 @@ static PSUIPrefsListController *globalController;
                     [task setArguments:@[@"-a"]];
                     break;
                 case 2:
-                    [task setLaunchPath:@"/usr/bin/ldrestart"];
+                    [task setLaunchPath:@"/usr/bin/sreboot"];
                     [task setArguments:@[]];
                     break;
                 case 3:
