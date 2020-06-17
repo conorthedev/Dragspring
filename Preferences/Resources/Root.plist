@@ -80,8 +80,6 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Configuration</string>
-            <key>footerText</key>
-            <string>When supplying a custom command, you must give the full path to the command. For example: '/usr/bin/sbreload' is 'sbreload'</string>
 		</dict>
         <dict>
 			<key>cell</key>
@@ -96,6 +94,38 @@
 			<string>Delay for 1 second before running</string>
             <key>PostNotification</key>
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
+		</dict>   
+        <dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Command</string>
+		</dict>     		
+        <dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>me.conorthedev.dragspring.prefs</string>
+			<key>key</key>
+			<string>command</string>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+                <integer>2</integer>
+                <integer>3</integer>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>sbreload</string>
+				<string>uicache</string>
+                <string>ldrestart</string>
+                <string>Custom</string>
+			</array>
+			<key>PostNotification</key>
+			<string>me.conorthedev.dragspring/ReloadPreferences</string>
 		</dict>
         <dict>
             <key>cell</key>
@@ -105,13 +135,13 @@
             <key>default</key>
             <string>/usr/bin/sbreload</string>
             <key>placeholder</key>
-            <string>Command</string>
+            <string></string>
             <key>defaults</key>
             <string>me.conorthedev.dragspring.prefs</string>
             <key>label</key>
-            <string>Command:</string>
+            <string>Custom Command</string>
             <key>key</key>
-            <string>command</string>
+            <string>customCommand</string>
             <key>PostNotification</key>
 			<string>me.conorthedev.dragspring/ReloadPreferences</string>
         </dict>
