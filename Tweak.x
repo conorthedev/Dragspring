@@ -6,9 +6,11 @@ BOOL enabled;
 BOOL shouldShowText;
 BOOL delayForSecond;
 
+int command;
+
 NSString *subtitleBefore;
 NSString *subtitleDuring;
-NSString *command;
+NSString *customCommand;
 
 static PSUIPrefsListController *globalController;
 
@@ -47,11 +49,6 @@ static PSUIPrefsListController *globalController;
     if(shouldShowText) {
         self.dragspringRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:subtitleDuring];
     }
-
-    NSMutableArray *arguments = [[command componentsSeparatedByString:@" "] mutableCopy];
-    NSString *command = arguments[0];
-
-    [arguments removeObject:command];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if(delayForSecond) {
@@ -60,13 +57,35 @@ static PSUIPrefsListController *globalController;
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSTask *task = [[NSTask alloc] init];
-            [task setLaunchPath:command];
-            [task setArguments:arguments];
+            NSMutableArray *arguments = [[customCommand componentsSeparatedByString:@" "] mutableCopy];
+            NSString *cmd = arguments[0];
+
+            switch (command) {
+                case 0:
+                    [task setLaunchPath:@"/usr/bin/sbreload"];
+                    [task setArguments:@[]];
+                    break;
+                case 1:
+                    [task setLaunchPath:@"/usr/bin/uicache"];
+                    [task setArguments:@[@"-a"]];
+                    break;
+                case 2:
+                    [task setLaunchPath:@"/usr/bin/ldrestart"];
+                    [task setArguments:@[]];
+                    break;
+                case 3:
+                    [arguments removeObject:cmd];
+
+                    [task setLaunchPath:cmd];
+                    [task setArguments:arguments];
+                    break;
+            }
+
             [task setTerminationHandler:^(NSTask* task) {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self.dragspringRefreshControl endRefreshing];
-                });
-            }];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self.dragspringRefreshControl endRefreshing];
+                    });
+                }];
             [task launch];
         });
     });
@@ -76,15 +95,16 @@ static PSUIPrefsListController *globalController;
 
 void ReloadPrefs() {
     defaults = [[NSUserDefaults alloc] initWithSuiteName:@"me.conorthedev.dragspring.prefs"];
-    [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring?", @"subtitleAfter": @"Respringing...", @"command": @"/usr/bin/sbreload" }];
+    [defaults registerDefaults:@{ @"enabled" : @YES, @"delayForSecond": @YES, @"appearance" : @0, @"subtitleBefore": @"Respring?", @"subtitleAfter": @"Respringing...", @"command": @0, @"customCommand": @"/usr/bin/sbreload" }];
     
     enabled = [[defaults objectForKey:@"enabled"] boolValue];
     delayForSecond = [[defaults objectForKey:@"delayForSecond"] boolValue];
     shouldShowText = [[defaults objectForKey:@"appearance"] intValue];
     subtitleBefore = [[defaults objectForKey:@"subtitleBefore"] stringValue];
     subtitleDuring = [[defaults objectForKey:@"subtitleAfter"] stringValue];
-    command = [[defaults objectForKey:@"command"] stringValue];
-    
+    command = [[defaults objectForKey:@"command"] intValue];
+    customCommand = [[defaults objectForKey:@"customCommand"] stringValue];
+
     if(globalController) {
         [globalController _dragspringUpdateRefreshControl];
     }
