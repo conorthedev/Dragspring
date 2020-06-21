@@ -60,8 +60,6 @@ void runCommand();
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSTask *task = [[NSTask alloc] init];
-            NSMutableArray *arguments = [[customCommand componentsSeparatedByString:@" "] mutableCopy];
-            NSString *cmd = arguments[0];
 
             switch (command) {
                 case 0:
@@ -77,10 +75,8 @@ void runCommand();
                     [task setArguments:@[]];
                     break;
                 case 3:
-                    [arguments removeObject:cmd];
-
-                    [task setLaunchPath:cmd];
-                    [task setArguments:arguments];
+                    [task setLaunchPath:@"/bin/sh"];
+                    [task setArguments:@[@"-c", customCommand]];
                     break;
             }
 
